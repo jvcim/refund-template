@@ -7,7 +7,7 @@ const category = document.getElementById("category")
 //Seleciona os elementos da lista
 const expenseList = document.querySelector("ul")
 const expenseQuantity = document.querySelector("aside header p span")
-const expenseTotal = document.querySelector(aside, header, h2)
+const expenseTotal = document.querySelector("aside, header, h2")
 
 // Capturando o evento de input para formatar o valor
 amount.oninput = () => {
@@ -60,12 +60,12 @@ function expenseAdd(newExpense){
   
     //Cria o ícone da categoria
     const expenseIcon = document.createElement("img")
-    expenseIcon.setAttribute("src", 'img/${newExpense.category_id}.svg')
+    expenseIcon.setAttribute("src", `img/${newExpense.category_id}.svg`)
     expenseIcon.setAttribute("alt", newExpense.category_name)
 
     //Cria a info da despesa
     const expenseInfo = document.createElement("div")
-    expenseInfo.classList.add(expense-info)
+    expenseInfo.classList.add("expense-info")
 
     // Cria o nome da despesa
     const expenseName = document.createElement("strong")
@@ -100,7 +100,7 @@ function expenseAdd(newExpense){
     expenseList.append(expenseItem)
 
     // Limpa o formulário para adicionar um novo item
-      formClear
+    formClear()
 
     //Atualiza os totais
     updateTotals()
@@ -114,7 +114,7 @@ function expenseAdd(newExpense){
 function updateTotals () {
   try {
     //Recupera todos os itens (li) da lista (ul)
-    const item = expenseList.children
+    const items = expenseList.children
 
     //atualiza a quantidade de itens na lista
     expenseQuantity.textContent = `${items.length} ${items.length > 1 ? "despesas" : "despesa"}`
@@ -145,7 +145,7 @@ function updateTotals () {
     symbolBRL.textContent = "R$"
 
     // Formata o valor e remove o R$ que será exibido pela small com um estilo customizado.
-    total = formatCurrencyBRL(total).toUppercase().replace("R$", "")
+    total = formatCurrencyBRL(total).toUpperCase().replace("R$", "")
 
     // Limpa o conteúdo do elemento.
     expenseTotal.innerHTML = ""
@@ -170,7 +170,7 @@ expenseList.addEventListener("click", function (event){
   }
 
   // Atualiza os totais.
-  updateTotals
+  updateTotals()
 })
 
 function formClear(){
